@@ -87,7 +87,6 @@ public class PostController extends BaseController {
     }
 
     /**
-     * ¬
      * 处理后台获取文章列表的请求
      *
      * @param model model
@@ -334,7 +333,7 @@ public class PostController extends BaseController {
         final String blogUrl = OPTIONS.get(BlogPropertiesEnum.BLOG_URL.getProp());
         final List<PostViewOutputDTO> posts = postService.findAll(PostTypeEnum.POST_TYPE_POST.getDesc())
                 .stream()
-                .map(post -> new PostViewOutputDTO().convertFrom(post))
+                .map(post -> (PostViewOutputDTO) new PostViewOutputDTO().convertFrom(post))
                 .collect(Collectors.toList());
         final StringBuilder urls = new StringBuilder();
         for (PostViewOutputDTO post : posts) {
